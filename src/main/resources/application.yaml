@@ -21,3 +21,6 @@ spring:
       hibernate.format_sql: true
       hibernate.default_batch_fetch_size: 100
   sql.init.mode: always
+  data.rest:
+    base-path: /api
+    detection-strategy: annotated   # 어노테이션으로 명시된 것만 Spring Data Rest가 감지
