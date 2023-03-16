@@ -23,7 +23,6 @@ class ArticleControllerTest {
         this.mvc = mvc;
     }
 
-    @Disabled("구현 중")
     @DisplayName("[view][GET] 게시글 리스트 (게시판) 페이지 - 정상 호출")
     @Test
     public void givenNothing_whenRequestingArticlesView_thenReturnsArticlesView() throws Exception {
@@ -32,7 +31,7 @@ class ArticleControllerTest {
         //when & then
         mvc.perform(get("/articles"))
                 .andExpect(status().isOk())                                 //200OK 확인
-                .andExpect(content().contentType(MediaType.TEXT_HTML))      //html 형식 확인
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))      //html 형식(하위 형식들 포함) 확인(html/charset-utf8)
                 .andExpect(view().name("articles/index"))   //뷰 이름 검사
                 .andExpect(model().attributeExists("articles"));    //model.addAttribute()로 model에 articles 데이터가 담겨있는지 확인
     }
@@ -46,7 +45,7 @@ class ArticleControllerTest {
         //when & then
         mvc.perform(get("/articles/1"))
                 .andExpect(status().isOk())                                 //200OK 확인
-                .andExpect(content().contentType(MediaType.TEXT_HTML))      //html 형식 확인
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))      //html 형식 확인
                 .andExpect(view().name("articles/detail"))   //뷰 이름 검사
                 .andExpect(model().attributeExists("article"))    //model.addAttribute()로 model에 article 데이터가 담겨있는지 확인
                 .andExpect(model().attributeExists("articleComments"));    //model.addAttribute()로 model에 articleComments 데이터가 담겨있는지 확인
@@ -61,7 +60,7 @@ class ArticleControllerTest {
         //when & then
         mvc.perform(get("/articles/search"))
                 .andExpect(status().isOk())                                 //200OK 확인
-                .andExpect(content().contentType(MediaType.TEXT_HTML))      //html 형식 확인
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))      //html 형식 확인
                 .andExpect(view().name("articles/search")); //뷰 이름 검사
     }
 
@@ -74,7 +73,7 @@ class ArticleControllerTest {
         //when & then
         mvc.perform(get("/articles/search-hashtag"))
                 .andExpect(status().isOk())                                 //200OK 확인
-                .andExpect(content().contentType(MediaType.TEXT_HTML))      //html 형식 확인
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))      //html 형식 확인
                 .andExpect(view().name("articles/search-hashtag"));   //뷰 이름 검사
     }
 }
