@@ -24,3 +24,5 @@ spring:
   data.rest:
     base-path: /api
     detection-strategy: annotated   # 어노테이션으로 명시된 것만 Spring Data Rest가 감지
+  thymeleaf3:
+    decouple-logic: true  # 디커플드 설정
