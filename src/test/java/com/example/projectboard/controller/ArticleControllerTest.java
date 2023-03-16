@@ -36,7 +36,7 @@ class ArticleControllerTest {
                 .andExpect(model().attributeExists("articles"));    //model.addAttribute()로 model에 articles 데이터가 담겨있는지 확인
     }
 
-    @Disabled("구현 중")
+
     @DisplayName("[view][GET] 게시글 상세 페이지 - 정상 호출")
     @Test
     public void givenNothing_whenRequestingArticleView_thenReturnsArticleView() throws Exception {
