@@ -16,7 +16,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Getter
-@ToString
+@ToString(callSuper = true)     //callSuper: 연관 엔티티 내부까지 출력을 위한 설정
 @Table(indexes = {
         @Index(columnList = "title"),
         @Index(columnList = "hashtag"),
@@ -31,12 +31,14 @@ public class Article extends AuditingFields{
     private Long id;
 
 
+    @Setter @ManyToOne(optional = false) private UserAccount userAccount;   //유저 정보 (ID)
+
     @Setter @Column(nullable = false) private String title;   //제목
     @Setter @Column(nullable = false, length = 10000) private String content; //본문
 
     @Setter private String hashtag; //해시태그
 
-    @OrderBy("id")
+    @OrderBy("createdAt DESC")
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     @ToString.Exclude       //toString 으로 인한 순환참조 방지
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
@@ -44,7 +46,8 @@ public class Article extends AuditingFields{
 
     protected Article() {}
 
-    private Article(String title, String content, String hashtag) {
+    private Article(UserAccount userAccount, String title, String content, String hashtag) {
+        this.userAccount = userAccount;
         this.title = title;
         this.content = content;
         this.hashtag = hashtag;
@@ -53,8 +56,8 @@ public class Article extends AuditingFields{
     /**
      * 팩토리 패턴
      */
-    public static Article of(String title, String content, String hashtag) {
-        return new Article(title, content, hashtag);
+    public static Article of(UserAccount userAccount, String title, String content, String hashtag) {
+        return new Article(userAccount, title, content, hashtag);
     }
 
     /**
