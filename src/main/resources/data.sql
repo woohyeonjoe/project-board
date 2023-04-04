@@ -2,11 +2,13 @@
 -- TODO: 테스트용이지만 비밀번호가 노출된 데이터 세팅. 개선하는 것이 좋을 지 고민해 보자.
 insert into user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, modified_by) values
     ('Joe', '1234', 'woohyeon', 'qlqkthd8802@gmail.com', 'I am Joe.', now(), 'Joe', now(), 'Joe');
+insert into user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, modified_by) values
+    ('Joe2', '1234', 'woohyeon2', 'qlqkthd88022@gmail.com', 'I am Joe2.', now(), 'Joe2', now(), 'Joe2');
 
 -- 123 게시글
-insert into article (user_account_id, title, content, hashtag, created_by, modified_by, created_at, modified_at) values (1, 'title', 'content', 'hashtag', '생성자', '수정자', '2021-03-10 08:48:50', '2021-03-10 08:48:50');
-insert into article (user_account_id, title, content, hashtag, created_by, modified_by, created_at, modified_at) values (1, '0', 'Fazenda Santa Maria Airport', 'Red', 'Teri', 'Berkly', '2022-11-06 02:54:30', '2022-10-19 12:20:29');
-insert into article (user_account_id, title, content, hashtag, created_by, modified_by, created_at, modified_at) values (1, 'UJN', 'Uljin Airport', 'Blue', 'Karla', 'Vivyan', '2023-03-07 07:24:03', '2022-12-05 11:34:23');
+insert into article (user_account_id, title, content, hashtag, created_by, modified_by, created_at, modified_at) values (2, 'title', 'content', 'hashtag', '생성자', '수정자', '2021-03-10 08:48:50', '2021-03-10 08:48:50');
+insert into article (user_account_id, title, content, hashtag, created_by, modified_by, created_at, modified_at) values (2, '0', 'Fazenda Santa Maria Airport', 'Red', 'Teri', 'Berkly', '2022-11-06 02:54:30', '2022-10-19 12:20:29');
+insert into article (user_account_id, title, content, hashtag, created_by, modified_by, created_at, modified_at) values (2, 'UJN', 'Uljin Airport', 'Blue', 'Karla', 'Vivyan', '2023-03-07 07:24:03', '2022-12-05 11:34:23');
 insert into article (user_account_id, title, content, hashtag, created_by, modified_by, created_at, modified_at) values (1, 'VPY', 'Chimoio Airport', 'Pink', 'Tessy', 'Jeremias', '2022-07-27 06:12:57', '2022-10-23 21:04:03');
 insert into article (user_account_id, title, content, hashtag, created_by, modified_by, created_at, modified_at) values (1, 'FRS', 'Mundo Maya International Airport', 'Green', 'Wandis', 'Steffen', '2022-07-23 18:48:07', '2022-12-17 17:50:42');
 insert into article (user_account_id, title, content, hashtag, created_by, modified_by, created_at, modified_at) values (1, 'JLN', 'Joplin Regional Airport', 'Violet', 'Shaine', 'Gottfried', '2022-05-30 21:19:57', '2022-07-17 16:28:19');
